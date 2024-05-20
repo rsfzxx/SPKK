@@ -49,6 +49,7 @@
                 @endforeach
             </tbody>
         </table>
+        <a href="{{ route('hasil.index') }}" class="btn btn-secondary btn-block">Hasil Akhir</a>
     </div>
 </body>
 </html>

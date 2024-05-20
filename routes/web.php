@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddKaryawanController;
+use App\Http\Controllers\HasilController;
 use App\Http\Controllers\NilaiKaryawanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/nilaikaryawan', [NilaiKaryawanController::class, 'index'])->name('nilaikaryawan.index');
     Route::get('/addgrade/{id}', [NilaiKaryawanController::class, 'showAddGradeForm'])->name('employees.showAddGradeForm');
     Route::post('/addgrade', [NilaiKaryawanController::class, 'addGrade'])->name('employees.addgrade');
+
+    Route::get('/hasilakhir', [HasilController::class, 'index'])->name('hasil.index');
 });
 
 require __DIR__.'/auth.php';

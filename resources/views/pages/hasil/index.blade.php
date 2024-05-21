@@ -1,75 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Penilaian Karyawan</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+<x-app-layout>
     <div class="container mt-5">
-        <h1>Hasil Penilaian Karyawan</h1>
-        <h2>Nilai Awal</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Absensi</th>
-                    <th>Kerapihan</th>
-                    <th>Loyalitas</th>
-                    <th>Kinerja</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($employees as $employee)
-                <tr>
-                    <td>{{ $employee->full_name }}</td>
-                    <td>{{ $employee->absensi }}</td>
-                    <td>{{ $employee->kerapihan }}</td>
-                    <td>{{ $employee->loyalitas }}</td>
-                    <td>{{ $employee->kinerja }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <h1 class="text-center font-extrabold text-xl md:text-2xl">Penilaian Karyawan Terbaik</h1>
+        <div class="container mt-5">
+            <h1 class="text-start font-extrabold text-xl md:text-2xl mb-2">Nilai Awal</h1>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <th>Absensi</th>
+                        <th>Kerapihan</th>
+                        <th>Loyalitas</th>
+                        <th>Kinerja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($employees as $employee)
+                    <tr>
+                        <td>{{ $employee->full_name }}</td>
+                        <td>{{ $employee->absensi }}</td>
+                        <td>{{ $employee->kerapihan }}</td>
+                        <td>{{ $employee->loyalitas }}</td>
+                        <td>{{ $employee->kinerja }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-        <h2>Hasil Normalisasi</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Normalisasi Absensi</th>
-                    <th>Normalisasi Kerapihan</th>
-                    <th>Normalisasi Loyalitas</th>
-                    <th>Normalisasi Kinerja</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($employees as $employee)
-                <tr>
-                    <td>{{ $employee->full_name }}</td>
-                    <td>{{ $employee->absensi_normalized }}</td>
-                    <td>{{ $employee->kerapihan_normalized }}</td>
-                    <td>{{ $employee->loyalitas_normalized }}</td>
-                    <td>{{ $employee->kinerja_normalized }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="container mt-5">
+            <h1 class="text-start font-extrabold text-xl md:text-2xl mb-3">Nilai Normalisasi</h1>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <th>Normalisasi Absensi</th>
+                        <th>Normalisasi Kerapihan</th>
+                        <th>Normalisasi Loyalitas</th>
+                        <th>Normalisasi Kinerja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($employees as $employee)
+                    <tr>
+                        <td>{{ $employee->full_name }}</td>
+                        <td>{{ $employee->absensi_normalized }}</td>
+                        <td>{{ $employee->kerapihan_normalized }}</td>
+                        <td>{{ $employee->loyalitas_normalized }}</td>
+                        <td>{{ $employee->kinerja_normalized }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
+        <h1 class="text-center font-extrabold text-xl md:text-2xl mb-3">Nilai Rata Rata Variabel</h1>
         <div style="width: 500px; margin: auto;">
             <canvas id="averagePieChart"></canvas>
         </div>
-        <div class="container">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col-md-6">
                     <div style="width: 100%; height: 100%;">
+                        <h1 class="text-center font-extrabold text-xl md:text-2xl mb-2 mt-3"> Nilai Absensi Tertinggi</h1>
                         <canvas id="top3Chart"></canvas>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div style="width: 100%; height: 100%;">
+                        <h1 class="text-center font-extrabold text-xl md:text-2xl mb-2 mt-3"> Nilai Kerapihan Tertinggi</h1>
                         <canvas id="top3Chart2"></canvas>
                     </div>
                 </div>
@@ -77,38 +75,42 @@
             <div class="row">
                 <div class="col-md-6">
                     <div style="width: 100%; height: 100%;">
+                        <h1 class="text-center font-extrabold text-xl md:text-2xl mb-2 mt-3"> Nilai Loyalitas Tertinggi</h1>
                         <canvas id="top3Chart3"></canvas>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div style="width: 100%; height: 100%;">
+                        <h1 class="text-center font-extrabold text-xl md:text-2xl mb-2 mt-3"> Nilai Kinerja Tertinggi</h1>
                         <canvas id="top3Chart4"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2>Top 3 Karyawan</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Full Name</th>
-                    <th>Total Nilai Normalisasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($top3Employees as $employee)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $employee->full_name }}</td>
-                    <td>{{ $employee->total_normalized_score }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="container mt-5">
+            <h1 class="text-center font-extrabold text-xl md:text-2xl mb-3">3 Karyawan Terbaik</h1>
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Full Name</th>
+                        <th>Total Nilai Normalisasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($top3Employees as $employee)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $employee->full_name }}</td>
+                        <td>{{ $employee->total_normalized_score }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-12">
                 <div style="width: 800px; margin: auto;">
                     <canvas id="combinedBarChart"></canvas>
@@ -117,7 +119,7 @@
         </div>
         
     </div>
-</body>
+</x-app-layout>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

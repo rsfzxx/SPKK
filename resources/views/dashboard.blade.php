@@ -1,16 +1,23 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <section class="relative">
+        <div class="w-full shadow-md" style="background-image: url('img/bg-dashboard.png')">
+            <div class="pt-24 pb-12 md:pt-40 md:pb-20">
+                <h1
+                    class="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4 text-gray-100 text-center px-28">
+                    SISTEM PENILAIAN KINERJA KARYAWAN (SPKK) DENGAN MENGGUNAKAN METODE SIMPLE ADDITIVE WEIGHTING DI
+                    PONDOK INDAH GOLF
+                </h1>
+                <div class="max-w-3xl mx-auto pt-10">
+                    <div class="max-w-xs mx-auto sm:mx-auto sm:max-w-none sm:flex sm:justify-center">
+                        <a href="{{ route('addkaryawan.create') }}"
+                            class="btn text-white bg-orange-500 hover:bg-orange-700 w-full mb-4 sm:w-auto sm:mb-0 flex items-center">
+                            <i class="bi bi-file-plus text-xl"></i>
+                            <span class="font-extrabold text-xl ml-2">Karyawan</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="row">
-        <div class="col-md-6">
-            <a href="{{ route('addkaryawan.index') }}" class="btn btn-primary btn-block">Add Karyawan</a>
-        </div>
-        <div class="col-md-6">
-            <a href="{{ route('nilaikaryawan.index') }}" class="btn btn-secondary btn-block">Nilai Karyawan</a>
-        </div>
-    </div>
 </x-app-layout>

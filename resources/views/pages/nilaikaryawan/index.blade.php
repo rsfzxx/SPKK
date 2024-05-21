@@ -1,12 +1,12 @@
 <x-app-layout>
-    <div class="container pt-5 bg-light">
-        <h1 class="text-center font-extrabold text-xl md:text-2xl">Penilaian Karyawan</h1>
-
+    <div class="container pt-3 bg-light">
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success w-25 d-flex justify-content-center">
                 {{ session('success') }}
             </div>
         @endif
+
+        <h1 class="text-center font-extrabold text-xl md:text-2xl">Penilaian Karyawan</h1>
 
         <div class="container flex justify-end items-center pt-4">
             <div class="flex items-center">

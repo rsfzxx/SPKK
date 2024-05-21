@@ -1,13 +1,12 @@
 <x-app-layout>
-    <div class="container pt-5 bg-light">
-        <h1 class="text-center font-extrabold text-xl md:text-2xl">List Karyawan</h1>
-
+    <div class="container pt-3 bg-light">
         @if (session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success w-25 d-flex justify-content-center">
                 {{ session('success') }}
             </div>
         @endif
 
+        <h1 class="text-center font-extrabold text-xl md:text-2xl">List Karyawan</h1>
         <div class="container flex justify-end items-center pt-4">
             <div class="flex items-center">
                 <a href="{{ route('addkaryawan.create') }}" class="btn bg-green-600 text-white hover:bg-green-700 ">
@@ -16,7 +15,7 @@
                 </a>
             </div>
             <div class="flex items-center ml-3">
-                <a href="{{ route('addkaryawan.create') }}" class="btn bg-blue-600 text-white hover:bg-blue-700 ">
+                <a href="{{ route('nilaikaryawan.index') }}" class="btn bg-blue-600 text-white hover:bg-blue-700 ">
                     <i class="bi bi-plus-circle"></i>
                     Nilai Karyawan
                 </a>
